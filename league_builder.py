@@ -62,12 +62,14 @@ def build_league():
             createLetterForPlayer(player, name, TRAINING_INFO[name])
 
 def createPlayerListFromTeam(team):
+    """Creates newline seperated list of players with some information"""
     playerStrings = []
     for player in team:
         playerStrings.append('{}, {}, {}'.format(player['Name'], player['Soccer Experience'], player['Guardian Name(s)']))
     return '\n'.join(playerStrings) + '\n\n'
 
 def createLetterForPlayer(player, team, training_info):
+    """Creates formatted letter in textfile for player with specified info"""
     filename = player['Name'].lower().replace(' ', '_')
     with open(filename + '.txt', 'w') as playerFile:
         playerFile.write(PLAYER_LETTER.format(team=team, training_info=training_info, **player))
